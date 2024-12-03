@@ -1,0 +1,12 @@
+---
+- name: Create LH directory
+  become: true
+  ansible.builtin.file:
+    path: "{{ lighthouse_dst_dir }}"
+    state: directory
+    mode: "755"
+- name: Download Lighthouse
+  become: true
+  ansible.builtin.git:
+    repo: "{{ lighthouse_url }}"
+    dest: "{{ lighthouse_dst_dir }}"
